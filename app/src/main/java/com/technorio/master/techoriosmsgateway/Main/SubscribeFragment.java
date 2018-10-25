@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.technorio.master.techoriosmsgateway.R;
@@ -78,7 +79,7 @@ public class SubscribeFragment extends Fragment{
 
                     has_subscribed.setVisibility(View.VISIBLE);
                     not_subscribed.setVisibility(View.INVISIBLE);
-
+                    Toast.makeText(getContext(), "You have subscribed to the topic "+topic.getText().toString(), Toast.LENGTH_SHORT).show();
                     dialog.dismiss();
                 }
             }

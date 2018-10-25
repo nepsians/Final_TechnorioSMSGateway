@@ -2,11 +2,12 @@
 <resources>
     <color name="colorPrimary">#8ac149</color>
     <color name="colorPrimaryDark">#4493f2</color>
-    <color name="colorAccent">#e3fbfc</color>
+    <color name="colorAccent">#a0bcbe</color>
 
     <color name="textColor">#B2AEB3</color>
     <color name="textHint">#a5b2aeb3</color>
     <color name="textViewBgTint">#382d3d</color>
     <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
 
 </resources>

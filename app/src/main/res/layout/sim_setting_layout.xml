@@ -3,29 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/textHint">
+    android:orientation="vertical">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
 
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="100dp"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        android:src="@drawable/ic_speech_bubble"
-        android:contentDescription="@string/chat_icon_desc"/>
-
-    </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:gravity="center">
+
         <!--sim 1 card view-->
         <LinearLayout
+            android:id="@+id/sim1_layout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -41,45 +29,46 @@
                 android:text="Sim 1"/>
 
             <android.support.v7.widget.CardView
-                android:id="@+id/sim_first"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_marginTop="10dp"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
-                android:background="@color/colorPrimaryDark">
+                android:background="@color/colorPrimaryDark"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="4dp">
 
                 <LinearLayout
+                    android:id="@+id/sim_first"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:background="#FFFFFF"
                     android:orientation="vertical"
-                    android:padding="8dp">
+                    android:padding="10dp">
 
                     <ImageView
                         android:id="@+id/sim2"
                         android:src="@drawable/sim2"
                         android:contentDescription="@string/sim1"
-                        android:padding="10dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp" />
+                        android:layout_width="80dp"
+                        android:layout_height="80dp" />
 
                 </LinearLayout>
 
             </android.support.v7.widget.CardView>
 
             <TextView
+                android:id="@+id/sim1_operator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="NTC"/>
 
         </LinearLayout>
-
         <!--sim 2 card view-->
         <LinearLayout
+            android:id="@+id/sim2_layout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -95,65 +84,45 @@
                 android:text="Sim 2"/>
 
             <android.support.v7.widget.CardView
-                android:id="@+id/sim_second"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="30dp"
                 android:layout_marginRight="30dp"
                 android:layout_height="wrap_content"
                 android:layout_width="wrap_content"
+                app:cardCornerRadius="4dp"
+                app:cardElevation="4dp"
                 android:background="@color/colorPrimaryDark">
 
                 <LinearLayout
+                    android:id="@+id/sim_second"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:background="#FFFFFF"
                     android:orientation="vertical"
-                    android:padding="8dp">
+                    android:padding="10dp">
 
                     <ImageView
                         android:id="@+id/sim1"
                         android:src="@drawable/sim2"
                         android:contentDescription="@string/sim1"
-                        android:padding="10dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_width="100dp"
-                        android:layout_height="100dp" />
+                        android:layout_width="80dp"
+                        android:layout_height="80dp" />
 
                 </LinearLayout>
 
             </android.support.v7.widget.CardView>
 
             <TextView
+                android:id="@+id/sim2_operator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="NCELL"/>
         </LinearLayout>
+
+
         </LinearLayout>
 
 
-      <!--  <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="1dp"
-            android:text="@string/sim1_desc"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:layout_marginStart="50dp"
-            android:layout_marginBottom="30dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:textAlignment="textStart"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:padding="2dp"
-            android:text="@string/sim2_desc"
-            android:textSize="25sp"
-            android:textStyle="bold"
-            android:layout_marginStart="120dp"
-            android:layout_marginBottom="30dp"
-            android:textColor="@color/colorPrimaryDark"
-            android:textAlignment="center"/>-->
     </RelativeLayout>
