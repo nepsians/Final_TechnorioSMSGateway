@@ -6,6 +6,11 @@
     android:orientation="vertical"
     android:background="@color/textHint">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -15,78 +20,120 @@
         android:src="@drawable/ic_speech_bubble"
         android:contentDescription="@string/chat_icon_desc"/>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
+    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <!--sim 1 card view-->
-        <android.support.v7.widget.CardView
-            android:id="@+id/sim_first"
-            android:layout_marginBottom="30dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="40dp"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:background="@color/colorPrimaryDark">
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_weight="1">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:background="#FFFFFF"
-                android:orientation="vertical"
-                android:padding="8dp">
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:text="Sim 1"/>
 
-                <ImageView
-                    android:id="@+id/sim1"
-                    android:src="@drawable/sim2"
-                    android:contentDescription="@string/sim1"
-                    android:padding="10dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp" />
+            <android.support.v7.widget.CardView
+                android:id="@+id/sim_first"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:background="@color/colorPrimaryDark">
 
-            </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:background="#FFFFFF"
+                    android:orientation="vertical"
+                    android:padding="8dp">
 
-        </android.support.v7.widget.CardView>
+                    <ImageView
+                        android:id="@+id/sim2"
+                        android:src="@drawable/sim2"
+                        android:contentDescription="@string/sim1"
+                        android:padding="10dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp" />
+
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="NTC"/>
+
+        </LinearLayout>
 
         <!--sim 2 card view-->
-        <android.support.v7.widget.CardView
-            android:id="@+id/sim_second"
-            android:layout_marginBottom="30dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginTop="40dp"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:background="@color/colorPrimaryDark">
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_weight="1">
 
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:background="#FFFFFF"
-                android:orientation="vertical"
-                android:padding="8dp">
+                android:textSize="20dp"
+                android:textStyle="bold"
+                android:layout_marginTop="20dp"
+                android:text="Sim 2"/>
 
-                <ImageView
-                    android:id="@+id/sim2"
-                    android:src="@drawable/sim2"
-                    android:contentDescription="@string/sim2"
-                    android:padding="10dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_width="100dp"
-                    android:layout_height="100dp" />
+            <android.support.v7.widget.CardView
+                android:id="@+id/sim_second"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:background="@color/colorPrimaryDark">
 
-            </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:background="#FFFFFF"
+                    android:orientation="vertical"
+                    android:padding="8dp">
 
-        </android.support.v7.widget.CardView>
+                    <ImageView
+                        android:id="@+id/sim1"
+                        android:src="@drawable/sim2"
+                        android:contentDescription="@string/sim1"
+                        android:padding="10dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="100dp"
+                        android:layout_height="100dp" />
 
-    </LinearLayout>
+                </LinearLayout>
 
-        <TextView
+            </android.support.v7.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="NCELL"/>
+        </LinearLayout>
+        </LinearLayout>
+
+
+      <!--  <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="1dp"
@@ -108,5 +155,5 @@
             android:layout_marginStart="120dp"
             android:layout_marginBottom="30dp"
             android:textColor="@color/colorPrimaryDark"
-            android:textAlignment="center"/>
+            android:textAlignment="center"/>-->
     </RelativeLayout>

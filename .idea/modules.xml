@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TechorioSMSGateway-master.iml" filepath="$PROJECT_DIR$/TechorioSMSGateway-master.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Final_TechnorioSMSGateway.iml" filepath="$PROJECT_DIR$/Final_TechnorioSMSGateway.iml" />
+      <module fileurl="file://C:\Users\Ujjwal\Desktop\Final_TechnorioSMSGateway\Final_TechnorioSMSGateway\TechorioSMSGateway-master.iml" filepath="C:\Users\Ujjwal\Desktop\Final_TechnorioSMSGateway\Final_TechnorioSMSGateway\TechorioSMSGateway-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://C:\Users\Ujjwal\Desktop\Final_TechnorioSMSGateway\Final_TechnorioSMSGateway\app\app.iml" filepath="C:\Users\Ujjwal\Desktop\Final_TechnorioSMSGateway\Final_TechnorioSMSGateway\app\app.iml" />
     </modules>
   </component>
 </project>
