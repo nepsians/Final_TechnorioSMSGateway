@@ -1,0 +1,39 @@
+<resources>
+    <string name="app_name">TechorioSMSGateway</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+
+    <string name="chat_icon_desc">chat bubble icon</string>
+
+    <string name="logoDesc">Company Logo</string>
+    <string name="userName_hint">Enter User Name Here</string>
+    <string name="password_hint">Enter Password Here</string>
+    <string name="login">Login</string>
+
+    <!--string of menu item of nav bar-->
+    <string name="subscription">Subscription</string>
+    <string name="msg_history">Message History</string>
+    <string name="sim_selection">Sim Setting</string>
+    <string name="about">About</string>
+    <string name="logout">Logout</string>
+
+    <!--string for subscription activity -->
+    <string name="topic">Enter a Topic</string>
+    <string name="subscribe">Subscribe</string>
+    <string name="subs_info">You are currently subscribed to</string>
+    <string name="subs_change">Click to Change</string>
+    <string name="topic_info">Topic</string>
+    <string name="unsubs_info">You are not subscribe to any Topic</string>
+    <string name="newSubs_button">Subscribe</string>
+
+    <!--sim selection -->
+    <string name="sim1">sim 1 Icon</string>
+    <string name="sim2">sim 2 Icon</string>
+    <string name="sim1_desc">Sim 1</string>
+    <string name="sim2_desc">Sim 2</string>
+
+
+</resources>

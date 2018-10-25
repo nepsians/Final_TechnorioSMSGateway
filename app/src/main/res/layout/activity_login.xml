@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.technorio.master.techoriosmsgateway.LoginActivity">
+
+    <ImageView
+        android:id="@+id/companyLogo"
+        android:src="@drawable/firm_logo"
+        android:contentDescription="@string/logoDesc"
+        android:layout_marginTop="35dp"
+        android:layout_width="wrap_content"
+        android:layout_height="150dp" />
+
+    <EditText
+        android:id="@+id/username"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:hint="@string/userName_hint"
+        android:background="@drawable/login_edittext_background"
+        android:drawableEnd="@drawable/ic_person_black_24dp"
+        android:padding="10dp" />
+
+    <EditText
+        android:id="@+id/password"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="center"
+        android:hint="@string/password_hint"
+        android:inputType="textPassword
+"
+        android:background="@drawable/login_edittext_background"
+        android:drawableEnd="@drawable/ic_vpn_key_black_24dp"
+        android:padding="10dp"
+        android:layout_width="250dp"
+        android:layout_height="60dp" />
+
+    <Button
+        android:id="@+id/login"
+        android:text="@string/login"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/login_button_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

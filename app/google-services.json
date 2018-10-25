@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "715378548997",
+    "firebase_url": "https://techoriosmsgateway.firebaseio.com",
+    "project_id": "techoriosmsgateway",
+    "storage_bucket": "techoriosmsgateway.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:715378548997:android:2cc1200d93af8be5",
+        "android_client_info": {
+          "package_name": "com.technorio.master.techoriosmsgateway"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "715378548997-auplef0v6bau0n3nsvs6vshjoatv2i12.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.technorio.master.techoriosmsgateway",
+            "certificate_hash": "329568cf78905d7eb512d7cb8a2ba3063f092e8e"
+          }
+        },
+        {
+          "client_id": "715378548997-eua34cgmd5jeqkse3gutfol6s6np69dm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAThMqHegCtyd18KqDxONGua_nksoaWcFM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "715378548997-eua34cgmd5jeqkse3gutfol6s6np69dm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
