@@ -1,5 +1,7 @@
 package com.technorio.master.techoriosmsgateway.FCM;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.telephony.SmsManager;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
@@ -7,6 +9,7 @@ import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.technorio.master.techoriosmsgateway.Main.MainActivity;
 import com.technorio.master.techoriosmsgateway.Utils.SharedPrefManager;
 
 import org.json.JSONArray;
@@ -64,6 +67,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         SubscriptionInfo subscriptionInfo = subscriptionManager.getActiveSubscriptionInfoForSimSlotIndex(SharedPrefManager.getInstance(getApplicationContext()).getSimId());
 
         ArrayList<String> parts = smsManager.divideMessage(message);
+
 
         if(parts.size() != 1){
             smsManager.getSmsManagerForSubscriptionId(subscriptionInfo.getSubscriptionId()).sendMultipartTextMessage(phoneNo,null, parts,null,null);

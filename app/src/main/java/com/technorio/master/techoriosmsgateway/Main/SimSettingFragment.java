@@ -112,19 +112,22 @@ public class SimSettingFragment extends Fragment {
         } else {
             builder = new AlertDialog.Builder(getContext());
         }
-        builder.setTitle("Sim Selection").setMessage("Are you sure you want to select SIM1?").
-                setPositiveButton("YES", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        SharedPrefManager.getInstance(getContext()).setSimId(0);
-                        setSimInfo();
-                    }
-                }).setNegativeButton("NO", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.cancel();
-            }
-        }).setIcon(android.R.drawable.ic_dialog_alert).show();
+
+        if(sim2_layout.getVisibility()== View.VISIBLE) {
+            builder.setTitle("Sim Selection").setMessage("Are you sure you want to select SIM1?").
+                    setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            SharedPrefManager.getInstance(getContext()).setSimId(0);
+                            setSimInfo();
+                        }
+                    }).setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.cancel();
+                }
+            }).setIcon(android.R.drawable.ic_dialog_alert).show();
+        }
     }
 
     public void sim2_selection() {
@@ -133,20 +136,22 @@ public class SimSettingFragment extends Fragment {
         } else {
             builder = new AlertDialog.Builder(getContext());
         }
-        builder.setTitle("Sim Selection").setMessage("Are you sure you want to select SIM2?").
-                setPositiveButton("YES", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        SharedPrefManager.getInstance(getContext()).setSimId(1);
-                        setSimInfo();
-                    }
-                }).setNegativeButton("NO", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                dialogInterface.cancel();
-            }
-        }).setIcon(android.R.drawable.ic_dialog_alert).show();
 
+        if(sim1_layout.getVisibility()== View.VISIBLE) {
+            builder.setTitle("Sim Selection").setMessage("Are you sure you want to select SIM2?").
+                    setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            SharedPrefManager.getInstance(getContext()).setSimId(1);
+                            setSimInfo();
+                        }
+                    }).setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    dialogInterface.cancel();
+                }
+            }).setIcon(android.R.drawable.ic_dialog_alert).show();
+        }
 
     }
 

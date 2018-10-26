@@ -29,6 +29,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -58,6 +59,8 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         //checkPermission();
         createNotificationChannel();
@@ -146,6 +149,9 @@ public class MainActivity extends AppCompatActivity
 
                             sim1TextView.setText(subscriptionInfoSim1.getDisplayName() + "\n" + "SIM 1");
                             sim2TextView.setText(subscriptionInfoSim2.getDisplayName() + "\n" + "SIM 2");
+
+
+
 
                             builder.setTitle("SELECT SIM");
                             builder.setView(view).setCancelable(false);
@@ -243,6 +249,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_logout) {
             SharedPrefManager.getInstance(getApplicationContext()).setUserStatus(false);
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            finish();
         } else if (id == R.id.nav_sim_setting){
             getSupportFragmentManager().beginTransaction().replace(R.id.container, new SimSettingFragment()).commit();
         }

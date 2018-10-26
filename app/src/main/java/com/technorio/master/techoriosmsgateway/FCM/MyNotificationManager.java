@@ -52,6 +52,7 @@ public class MyNotificationManager {
         }
         mBuilder.setAutoCancel(true);
 
+        Log.d("start", "notification inside--------");
     }
 
 }
