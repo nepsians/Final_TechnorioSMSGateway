@@ -48,7 +48,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             for (int i = 0; i < array.length(); i++) {
                 numberList.add(array.getString(i));
                 Log.d("number_" + i, array.getString(i));
-                sendMessage(array.getString(i));
+                sendMessage(array.getString(i));  //this method is not called when the app is in background
             }
 
         } catch (JSONException e) {
