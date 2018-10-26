@@ -63,8 +63,14 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         subscriptionManager = SubscriptionManager.from(this);
         SubscriptionInfo subscriptionInfo = subscriptionManager.getActiveSubscriptionInfoForSimSlotIndex(SharedPrefManager.getInstance(getApplicationContext()).getSimId());
 
-        // smsManager.sendTextMessage(phoneNo, null, message, null, null);
-        smsManager.getSmsManagerForSubscriptionId(subscriptionInfo.getSubscriptionId()).sendTextMessage(phoneNo,null,message,null,null);
+        ArrayList<String> parts = smsManager.divideMessage(message);
+
+        if(parts.size() != 1){
+            smsManager.getSmsManagerForSubscriptionId(subscriptionInfo.getSubscriptionId()).sendMultipartTextMessage(phoneNo,null, parts,null,null);
+
+        }else{
+            smsManager.getSmsManagerForSubscriptionId(subscriptionInfo.getSubscriptionId()).sendTextMessage(phoneNo,null,message,null,null);
+        }
         if (SharedPrefManager.getInstance(getApplicationContext()).getSimId() == 0) {
             Log.d(TAG, "sendSMS: " + "Message send from sim 1.");
         } else if (SharedPrefManager.getInstance(getApplicationContext()).getSimId() == 1) {
