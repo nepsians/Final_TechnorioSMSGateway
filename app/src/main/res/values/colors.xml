@@ -10,4 +10,9 @@
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
 
+    <color name="light_red">#fc0505</color>
+    
+    <color name="white_smoke">#e6dede</color>
+    <color name="green_light">#F9FCF9</color>
+
 </resources>

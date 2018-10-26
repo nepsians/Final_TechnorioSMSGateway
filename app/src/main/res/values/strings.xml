@@ -35,5 +35,8 @@
     <string name="sim1_desc">Sim 1</string>
     <string name="sim2_desc">Sim 2</string>
 
+    <string name="error_text">Invalid username or password</string>
+    <string name="register">Register</string>
+
 
 </resources>

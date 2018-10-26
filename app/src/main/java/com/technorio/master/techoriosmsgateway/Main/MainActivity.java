@@ -223,10 +223,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-<<<<<<< HEAD
-=======
 
->>>>>>> eaf48f8c4deb8e0e121a7e5692de48f6f2fe2ecb
 
         return super.onOptionsItemSelected(item);
     }
