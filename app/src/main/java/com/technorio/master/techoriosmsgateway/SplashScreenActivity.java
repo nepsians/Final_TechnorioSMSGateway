@@ -8,6 +8,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.technorio.master.techoriosmsgateway.Main.MainActivity;
 import com.technorio.master.techoriosmsgateway.Utils.SharedPrefManager;
 
@@ -29,6 +30,9 @@ public class SplashScreenActivity extends AppCompatActivity {
                 //check login or not and set intent
                 if (SharedPrefManager.getInstance(getApplicationContext()).getUserStatus()) {
                     startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
+                    if(!SharedPrefManager.getInstance(getApplicationContext()).getSubsctiptionTopic().isEmpty()){
+                        FirebaseMessaging.getInstance().subscribeToTopic(SharedPrefManager.getInstance(getApplicationContext()).getSubsctiptionTopic());
+                    }
                 } else {
                     startActivity(new Intent(SplashScreenActivity.this, LoginActivity.class));
                 }
