@@ -6,7 +6,16 @@
     android:orientation="vertical">
 
 
-        <LinearLayout
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:src="@drawable/ic_speech_bubble"
+        android:contentDescription="@string/chat_icon_desc"/>
+
+
+    <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center">

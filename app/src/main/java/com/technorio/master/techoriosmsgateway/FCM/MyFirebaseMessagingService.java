@@ -1,12 +1,19 @@
 package com.technorio.master.techoriosmsgateway.FCM;
 
+import android.content.ComponentName;
 import android.content.Intent;
+import android.content.ServiceConnection;
 import android.net.Uri;
+import android.os.Bundle;
+import android.os.IBinder;
 import android.telephony.SmsManager;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.util.Log;
 
+import com.firebase.jobdispatcher.FirebaseJobDispatcher;
+import com.firebase.jobdispatcher.GooglePlayDriver;
+import com.firebase.jobdispatcher.Job;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.technorio.master.techoriosmsgateway.Main.MainActivity;
@@ -33,41 +40,59 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
 
-        smsManager = SmsManager.getDefault();
+        if (SharedPrefManager.getInstance(getApplicationContext()).getUserStatus()) {
 
-        String title = remoteMessage.getNotification().getTitle();
-        String body = remoteMessage.getNotification().getBody();
-        String data = remoteMessage.getData().get("body");
+            smsManager = SmsManager.getDefault();
 
-        try {
-            JSONObject jsonData = new JSONObject(data);
-            message = jsonData.getString("message");
-            Log.d("messsage", message);
+            //String title = remoteMessage.getNotification().getTitle();
+            //String body = remoteMessage.getNotification().getBody();
+            String data = remoteMessage.getData().get("body");
 
-            JSONArray array = jsonData.getJSONArray("numbers");
-            for (int i = 0; i < array.length(); i++) {
-                numberList.add(array.getString(i));
-                Log.d("number_" + i, array.getString(i));
-                sendMessage(array.getString(i));  //this method is not called when the app is in background
+            try {
+                JSONObject jsonData = new JSONObject(data);
+                message = jsonData.getString("message");
+                Log.d("messsage", message);
+
+                JSONArray array = jsonData.getJSONArray("numbers");
+                for (int i = 0; i < array.length(); i++) {
+                    numberList.add(array.getString(i));
+                    Log.d("number_" + i, array.getString(i));
+                    sendMessage(array.getString(i));  //this method is not called when the app is in background
+                }
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+                Log.d("sms", "exception. cannot fetch data");
             }
 
-        } catch (JSONException e) {
-            e.printStackTrace();
-            Log.d("sms", "exception occured====================no------");
+            MyNotificationManager.getmInstance(getApplicationContext())
+                    .displayNotification("mytitle", "mybody", message, numberList);
+
+            // scheduleJob(data);
         }
 
-        MyNotificationManager.getmInstance(getApplicationContext())
-                .displayNotification(title, body, message, numberList);
+    }
+
+    private void scheduleJob(String myData){
+
+        Bundle bundle = new Bundle();
+        bundle.putString("myData", myData);
+
+        FirebaseJobDispatcher dispatcher =
+                new FirebaseJobDispatcher(new GooglePlayDriver(this));
+        Job myJob = dispatcher.newJobBuilder()
+                .setService(MyMessengerService.class)
+                .setTag("message_sending_job")
+                .setExtras(bundle)
+                .build();
+        dispatcher.mustSchedule(myJob);
     }
 
     public void sendMessage(String phoneNo){
-       //smsManager.sendTextMessage(phoneNo, null, message, null, null);
-        SubscriptionManager subscriptionManager = null;
-        subscriptionManager = SubscriptionManager.from(this);
+        SubscriptionManager subscriptionManager = SubscriptionManager.from(this);
         SubscriptionInfo subscriptionInfo = subscriptionManager.getActiveSubscriptionInfoForSimSlotIndex(SharedPrefManager.getInstance(getApplicationContext()).getSimId());
 
         ArrayList<String> parts = smsManager.divideMessage(message);
-
 
         if(parts.size() != 1){
             smsManager.getSmsManagerForSubscriptionId(subscriptionInfo.getSubscriptionId()).sendMultipartTextMessage(phoneNo,null, parts,null,null);
