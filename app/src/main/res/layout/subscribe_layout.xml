@@ -7,7 +7,6 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="100dp"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:src="@drawable/ic_speech_bubble"
@@ -64,6 +63,8 @@
             android:layout_marginTop="20sp"
             android:layout_height="wrap_content"
             android:textSize="18sp"
+            android:paddingLeft="5dp"
+            android:paddingRight="5dp"
             android:text="@string/topic_info"
             android:background="@drawable/login_button_background"/>
 
