@@ -1,11 +1,6 @@
-package com.technorio.master.techoriosmsgateway.FCM;
+package com.technorio.master.techoriosmsgateway3.FCM;
 
-import android.content.ComponentName;
-import android.content.Intent;
-import android.content.ServiceConnection;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.telephony.SmsManager;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
@@ -16,8 +11,7 @@ import com.firebase.jobdispatcher.GooglePlayDriver;
 import com.firebase.jobdispatcher.Job;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
-import com.technorio.master.techoriosmsgateway.Main.MainActivity;
-import com.technorio.master.techoriosmsgateway.Utils.SharedPrefManager;
+import com.technorio.master.techoriosmsgateway3.Utils.SharedPrefManager;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,7 +26,7 @@ import java.util.ArrayList;
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     String message;
-    String TAG="sms";
+    String TAG = "sms";
 
     ArrayList<String> numberList = new ArrayList<>();
     SmsManager smsManager;
@@ -49,6 +43,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             String data = remoteMessage.getData().get("body");
 
             try {
+
+
                 JSONObject jsonData = new JSONObject(data);
                 message = jsonData.getString("message");
                 Log.d("messsage", message);
@@ -57,8 +53,11 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                 for (int i = 0; i < array.length(); i++) {
                     numberList.add(array.getString(i));
                     Log.d("number_" + i, array.getString(i));
-                    sendMessage(array.getString(i));  //this method is not called when the app is in background
+                    sendMessage(array.getString(i));
+
+
                 }
+
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -66,45 +65,32 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             }
 
             MyNotificationManager.getmInstance(getApplicationContext())
-                    .displayNotification("mytitle", "mybody", message, numberList);
+                    .displayNotification("Technorio SMS notification", "Technorio SMS notification", message, numberList);
+
 
             // scheduleJob(data);
         }
 
     }
 
-    private void scheduleJob(String myData){
 
-        Bundle bundle = new Bundle();
-        bundle.putString("myData", myData);
-
-        FirebaseJobDispatcher dispatcher =
-                new FirebaseJobDispatcher(new GooglePlayDriver(this));
-        Job myJob = dispatcher.newJobBuilder()
-                .setService(MyMessengerService.class)
-                .setTag("message_sending_job")
-                .setExtras(bundle)
-                .build();
-        dispatcher.mustSchedule(myJob);
-    }
-
-    public void sendMessage(String phoneNo){
+    public void sendMessage(String phoneNo) {
         SubscriptionManager subscriptionManager = SubscriptionManager.from(this);
         SubscriptionInfo subscriptionInfo = subscriptionManager.getActiveSubscriptionInfoForSimSlotIndex(SharedPrefManager.getInstance(getApplicationContext()).getSimId());
 
         ArrayList<String> parts = smsManager.divideMessage(message);
 
-        if(parts.size() != 1){
-            smsManager.getSmsManagerForSubscriptionId(subscriptionInfo.getSubscriptionId()).sendMultipartTextMessage(phoneNo,null, parts,null,null);
+        if (parts.size() != 1) {
+            smsManager.getSmsManagerForSubscriptionId(subscriptionInfo.getSubscriptionId()).sendMultipartTextMessage(phoneNo, null, parts, null, null);
 
-        }else{
-            smsManager.getSmsManagerForSubscriptionId(subscriptionInfo.getSubscriptionId()).sendTextMessage(phoneNo,null,message,null,null);
+        } else {
+            smsManager.getSmsManagerForSubscriptionId(subscriptionInfo.getSubscriptionId()).sendTextMessage(phoneNo, null, message, null, null);
         }
         if (SharedPrefManager.getInstance(getApplicationContext()).getSimId() == 0) {
             Log.d(TAG, "sendSMS: " + "Message send from sim 1.");
         } else if (SharedPrefManager.getInstance(getApplicationContext()).getSimId() == 1) {
             Log.d(TAG, "sendSMS: " + "Message send from sim 2.");
-        }else {
+        } else {
             Log.d(TAG, "sendSMS: " + "Invalid Number.");
         }
     }

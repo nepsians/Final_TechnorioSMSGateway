@@ -1,4 +1,4 @@
-package com.technorio.master.techoriosmsgateway.Main;
+package com.technorio.master.techoriosmsgateway3.Main;
 
 import android.Manifest;
 import android.app.NotificationChannel;
@@ -10,8 +10,6 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
@@ -33,11 +31,11 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.technorio.master.techoriosmsgateway.LoginActivity;
-import com.technorio.master.techoriosmsgateway.R;
-import com.technorio.master.techoriosmsgateway.Utils.Constants;
-import com.technorio.master.techoriosmsgateway.Utils.SharedPrefManager;
-import com.technorio.master.techoriosmsgateway.Utils.TelephonyInfo;
+import com.technorio.master.techoriosmsgateway3.LoginActivity;
+import com.technorio.master.techoriosmsgateway3.R;
+import com.technorio.master.techoriosmsgateway3.Utils.Constants;
+import com.technorio.master.techoriosmsgateway3.Utils.SharedPrefManager;
+import com.technorio.master.techoriosmsgateway3.Utils.TelephonyInfo;
 
 import java.util.ArrayList;
 import java.util.HashMap;

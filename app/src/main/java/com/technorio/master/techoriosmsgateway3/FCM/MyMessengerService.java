@@ -1,4 +1,4 @@
-package com.technorio.master.techoriosmsgateway.FCM;
+package com.technorio.master.techoriosmsgateway3.FCM;
 
 
 
@@ -9,7 +9,7 @@ import android.util.Log;
 
 import com.firebase.jobdispatcher.JobParameters;
 import com.firebase.jobdispatcher.JobService;
-import com.technorio.master.techoriosmsgateway.Utils.SharedPrefManager;
+import com.technorio.master.techoriosmsgateway3.Utils.SharedPrefManager;
 
 import org.json.JSONArray;
 import org.json.JSONException;

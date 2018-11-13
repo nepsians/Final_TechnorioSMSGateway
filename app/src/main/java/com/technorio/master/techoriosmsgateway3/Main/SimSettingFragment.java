@@ -1,15 +1,13 @@
-package com.technorio.master.techoriosmsgateway.Main;
+package com.technorio.master.techoriosmsgateway3.Main;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
-import android.support.v7.widget.CardView;
 import android.telephony.SubscriptionInfo;
 import android.telephony.SubscriptionManager;
 import android.view.LayoutInflater;
@@ -18,8 +16,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.technorio.master.techoriosmsgateway.R;
-import com.technorio.master.techoriosmsgateway.Utils.SharedPrefManager;
+import com.technorio.master.techoriosmsgateway3.R;
+import com.technorio.master.techoriosmsgateway3.Utils.SharedPrefManager;
 
 /**
  * Created by Ujjwal on 10/23/2018.

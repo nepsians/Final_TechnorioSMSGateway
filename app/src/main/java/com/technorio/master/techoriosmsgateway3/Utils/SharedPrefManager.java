@@ -1,8 +1,7 @@
-package com.technorio.master.techoriosmsgateway.Utils;
+package com.technorio.master.techoriosmsgateway3.Utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.widget.Toast;
 
 /**
  * Created by Ujjwal on 10/23/2018.

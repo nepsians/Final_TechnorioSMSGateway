@@ -1,4 +1,4 @@
-package com.technorio.master.techoriosmsgateway;
+package com.technorio.master.techoriosmsgateway3;
 
 import org.junit.Test;
 

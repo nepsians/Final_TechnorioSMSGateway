@@ -1,17 +1,16 @@
-package com.technorio.master.techoriosmsgateway.FCM;
+package com.technorio.master.techoriosmsgateway3.FCM;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.provider.SyncStateContract;
 import android.support.v4.app.NotificationCompat;
 import android.telephony.SmsManager;
 import android.util.Log;
 
-import com.technorio.master.techoriosmsgateway.Main.MainActivity;
-import com.technorio.master.techoriosmsgateway.R;
-import com.technorio.master.techoriosmsgateway.Utils.Constants;
+import com.technorio.master.techoriosmsgateway3.Main.MainActivity;
+import com.technorio.master.techoriosmsgateway3.R;
+import com.technorio.master.techoriosmsgateway3.Utils.Constants;
 
 import java.util.ArrayList;
 
@@ -19,7 +18,6 @@ public class MyNotificationManager {
 
     private Context mCtx;
     private static MyNotificationManager mInstance;
-    SmsManager smsManager = SmsManager.getDefault();
 
     private MyNotificationManager(Context mCtx) {
         this.mCtx = mCtx;
@@ -54,5 +52,6 @@ public class MyNotificationManager {
 
         Log.d("start", "notification inside--------");
     }
+
 
 }

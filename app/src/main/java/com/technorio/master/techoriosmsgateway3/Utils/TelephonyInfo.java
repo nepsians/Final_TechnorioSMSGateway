@@ -1,4 +1,4 @@
-package com.technorio.master.techoriosmsgateway.Utils;
+package com.technorio.master.techoriosmsgateway3.Utils;
 
 import android.Manifest;
 import android.app.Activity;

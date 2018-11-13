@@ -1,4 +1,4 @@
-package com.technorio.master.techoriosmsgateway.Utils;
+package com.technorio.master.techoriosmsgateway3.Utils;
 
 /**
  * Created by Ujjwal on 10/23/2018.

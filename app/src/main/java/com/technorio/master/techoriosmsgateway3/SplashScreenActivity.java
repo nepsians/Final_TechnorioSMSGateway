@@ -1,4 +1,4 @@
-package com.technorio.master.techoriosmsgateway;
+package com.technorio.master.techoriosmsgateway3;
 
 import android.content.Intent;
 import android.os.Handler;
@@ -6,11 +6,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Toast;
 
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.technorio.master.techoriosmsgateway.Main.MainActivity;
-import com.technorio.master.techoriosmsgateway.Utils.SharedPrefManager;
+import com.technorio.master.techoriosmsgateway3.Main.MainActivity;
+import com.technorio.master.techoriosmsgateway3.Utils.SharedPrefManager;
 
 public class SplashScreenActivity extends AppCompatActivity {
 

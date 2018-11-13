@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.technorio.master.techoriosmsgateway">
+    package="com.technorio.master.techoriosmsgateway3">
 
     <uses-permission android:name="android.permission.SEND_SMS" />
     <uses-permission android:name="android.permission.INTERNET" />
@@ -13,11 +13,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Main.MainActivity"
+            android:name="com.technorio.master.techoriosmsgateway3.Main.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name=".SplashScreenActivity"
+            android:name="com.technorio.master.techoriosmsgateway3.SplashScreenActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,11 +26,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".LoginActivity"
+            android:name="com.technorio.master.techoriosmsgateway3.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <service
-            android:name=".FCM.MyFirebaseInstanceIdService"
+            android:name="com.technorio.master.techoriosmsgateway3.FCM.MyFirebaseInstanceIdService"
             android:enabled="true"
             android:exported="true">
             <intent-filter>
@@ -38,15 +38,15 @@
             </intent-filter>
         </service>
         <service
-            android:name=".FCM.MyFirebaseMessagingService"
+            android:name="com.technorio.master.techoriosmsgateway3.FCM.MyFirebaseMessagingService"
             android:enabled="true"
-            android:exported="true">
+            android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
         <service
-            android:name=".FCM.MyMessengerService"
+            android:name="com.technorio.master.techoriosmsgateway3.FCM.MyMessengerService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE" />

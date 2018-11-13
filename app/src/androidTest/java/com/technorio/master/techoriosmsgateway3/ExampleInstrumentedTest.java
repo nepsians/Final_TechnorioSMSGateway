@@ -1,4 +1,4 @@
-package com.technorio.master.techoriosmsgateway;
+package com.technorio.master.techoriosmsgateway3;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

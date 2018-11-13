@@ -1,4 +1,4 @@
-package com.technorio.master.techoriosmsgateway.Main;
+package com.technorio.master.techoriosmsgateway3.Main;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,12 +11,11 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.messaging.FirebaseMessaging;
-import com.technorio.master.techoriosmsgateway.R;
-import com.technorio.master.techoriosmsgateway.Utils.SharedPrefManager;
+import com.technorio.master.techoriosmsgateway3.R;
+import com.technorio.master.techoriosmsgateway3.Utils.SharedPrefManager;
 
 /**
  * Created by Ujjwal on 10/23/2018.
