@@ -1,5 +1,6 @@
 package com.technorio.master.techoriosmsgateway3.FCM;
 
+import android.content.ContentValues;
 import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.telephony.SubscriptionInfo;
@@ -11,6 +12,7 @@ import com.firebase.jobdispatcher.GooglePlayDriver;
 import com.firebase.jobdispatcher.Job;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.technorio.master.techoriosmsgateway3.Utils.DatabaseHelper;
 import com.technorio.master.techoriosmsgateway3.Utils.SharedPrefManager;
 
 import org.json.JSONArray;
@@ -30,6 +32,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     ArrayList<String> numberList = new ArrayList<>();
     SmsManager smsManager;
+    DatabaseHelper databaseHelper;
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -41,13 +44,15 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             //String title = remoteMessage.getNotification().getTitle();
             //String body = remoteMessage.getNotification().getBody();
             String data = remoteMessage.getData().get("body");
-
+            databaseHelper = new DatabaseHelper(getApplicationContext());
             try {
-
 
                 JSONObject jsonData = new JSONObject(data);
                 message = jsonData.getString("message");
                 Log.d("messsage", message);
+
+
+                long message_id = databaseHelper.insertMessage(message);
 
                 JSONArray array = jsonData.getJSONArray("numbers");
                 for (int i = 0; i < array.length(); i++) {
@@ -55,7 +60,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
                     Log.d("number_" + i, array.getString(i));
                     sendMessage(array.getString(i));
 
-
+                    databaseHelper.insertRecord(array.getString(i), message_id);
                 }
 
 
@@ -66,6 +71,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
             MyNotificationManager.getmInstance(getApplicationContext())
                     .displayNotification("Technorio SMS notification", "Technorio SMS notification", message, numberList);
+
 
 
             // scheduleJob(data);

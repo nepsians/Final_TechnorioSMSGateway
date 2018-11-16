@@ -31,12 +31,7 @@ public class SharedPrefManager {
         return mInstance;
     }
 
-    public void storeTitle(String title){
-        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(Constants.SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString(Constants.KEY_TITLE, title);
-        editor.apply();
-    }
+
 
     public String getTitle(){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(Constants.SHARED_PREF_NAME, Context.MODE_PRIVATE);
@@ -65,7 +60,11 @@ public class SharedPrefManager {
     public String getSubsctiptionTopic(){
         SharedPreferences sharedPreferences = mCtx.getSharedPreferences(Constants.SHARED_PREF_NAME, Context.MODE_PRIVATE);
         return sharedPreferences.getString(KEY_SUBSC_TOPIC, "");
+    }
 
+    public void clearSubscriptionTopic(){
+        SharedPreferences sharedPreferences = mCtx.getSharedPreferences(Constants.SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        sharedPreferences.edit().remove(KEY_SUBSC_TOPIC).commit();
     }
 
 

@@ -247,6 +247,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_logout) {
             SharedPrefManager.getInstance(getApplicationContext()).setUserStatus(false);
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
+            SharedPrefManager.getInstance(getApplicationContext()).clearSubscriptionTopic();
             finish();
         } else if (id == R.id.nav_sim_setting){
             getSupportFragmentManager().beginTransaction().replace(R.id.container, new SimSettingFragment()).commit();

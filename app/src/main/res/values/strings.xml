@@ -26,7 +26,7 @@
     <string name="subs_info">You are currently subscribed to</string>
     <string name="subs_change">Click to Change</string>
     <string name="topic_info">Topic</string>
-    <string name="unsubs_info">You are not subscribe to any Topic</string>
+    <string name="unsubs_info">You have not subscribed to any Topic</string>
     <string name="newSubs_button">Subscribe</string>
 
     <!--sim selection -->
