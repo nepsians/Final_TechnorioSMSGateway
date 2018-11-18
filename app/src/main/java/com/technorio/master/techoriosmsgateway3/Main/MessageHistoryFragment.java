@@ -97,7 +97,7 @@ public class MessageHistoryFragment extends Fragment {
             final Message msg = messageList.get(position);
             message.setText(msg.getMessage());
             message_no.setText(new DatabaseHelper(getContext()).getSMSNoByMessageId(msg.getId()) + " messages sent");
-            message_date.setText(msg.getDate());
+            message_date.setText(msg.getDate().substring(5));
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override

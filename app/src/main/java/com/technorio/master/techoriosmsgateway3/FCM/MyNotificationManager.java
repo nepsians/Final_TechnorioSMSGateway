@@ -4,6 +4,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Vibrator;
 import android.support.v4.app.NotificationCompat;
 import android.telephony.SmsManager;
 import android.util.Log;
@@ -50,7 +51,10 @@ public class MyNotificationManager {
         }
         mBuilder.setAutoCancel(true);
 
-        Log.d("start", "notification inside--------");
+        //vibrate with pattern
+        Vibrator v = (Vibrator) mCtx.getSystemService(Context.VIBRATOR_SERVICE);
+        long[] mVibratePattern = new long[]{0, 400, 200, 400};
+        v.vibrate(mVibratePattern, -1);
     }
 
 

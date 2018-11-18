@@ -82,7 +82,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public long insertMessage(String message){
 
         Calendar cal = Calendar.getInstance();
-        String date = new SimpleDateFormat("MMM-dd").format(cal.getTime());
+        String date = new SimpleDateFormat("YYY-MMM-dd").format(cal.getTime());
 
         ContentValues contentValues = new ContentValues();
         contentValues.put("message", message);
@@ -95,13 +95,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public String getMessageById(int message_id){
+    public Message getMessageById(int message_id){
 
-        String sql = "select message from message where id="+message_id;
+        Message message = new Message();
+
+        String sql = "select * from message where id="+message_id;
         Cursor c = getReadableDatabase().rawQuery(sql, null);
-        String message ="";
+
         while(c.moveToNext()){
-            message = c.getString(c.getColumnIndex("message"));
+            message.setMessage(c.getString(c.getColumnIndex("message")));
+            message.setDate(c.getString(c.getColumnIndex("date")));
         }
         return message;
 

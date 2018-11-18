@@ -10,14 +10,7 @@
         android:layout_marginRight="5dp"
         android:src="@drawable/ic_speech_bubble" />
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/pullToRefresh"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal">
+
     <!--record empty-->
     <LinearLayout
         android:id="@+id/no_record_layout"
@@ -40,15 +33,18 @@
         android:layout_height="wrap_content"
         android:visibility="gone">
 
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/pullToRefresh"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
         <ListView
             android:id="@+id/messageList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"></ListView>
+        </android.support.v4.widget.SwipeRefreshLayout>
 
     </LinearLayout>
 
-    </LinearLayout>
 
-    </android.support.v4.widget.SwipeRefreshLayout>
 
 </RelativeLayout>

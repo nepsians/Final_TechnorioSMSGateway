@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.technorio.master.techoriosmsgateway3.Model.Message;
 import com.technorio.master.techoriosmsgateway3.R;
 import com.technorio.master.techoriosmsgateway3.Utils.DatabaseHelper;
 
@@ -16,7 +17,7 @@ import java.util.ArrayList;
 
 public class MessageDetailActivity extends AppCompatActivity {
 
-    TextView message;
+    TextView message, message_date;
     ListView listView;
 
     @Override
@@ -28,6 +29,7 @@ public class MessageDetailActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         message = findViewById(R.id.message);
+        message_date = findViewById(R.id.message_date);
         listView = findViewById(R.id.number_list);
 
         Intent i = getIntent();
@@ -38,14 +40,15 @@ public class MessageDetailActivity extends AppCompatActivity {
 
         ArrayAdapter<String> itemsAdapter =
                 new ArrayAdapter<>(this, R.layout.number_list_item, number_list);
-//R.layout.simple_list_item_1
+
         listView.setDividerHeight(0);
         listView.setDivider(null);
         listView.setAdapter(itemsAdapter);
 
+        Message myMessage = new DatabaseHelper(MessageDetailActivity.this).getMessageById(message_id);
 
-        message.setText(new DatabaseHelper(MessageDetailActivity.this).getMessageById(message_id));
-
+        message.setText(myMessage.getMessage());
+        message_date.setText(myMessage.getDate());
 
     }
 
