@@ -8,11 +8,37 @@
         android:layout_height="match_parent"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:src="@drawable/ic_speech_bubble"/>
+        android:src="@drawable/ic_speech_bubble" />
 
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/pullToRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+    <!--record empty-->
+    <LinearLayout
+        android:id="@+id/no_record_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No records found..."
+            android:textSize="18sp" />
+
+    </LinearLayout>
+
+    <!--record not empty-->
+    <LinearLayout
+        android:id="@+id/record_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone">
 
         <ListView
             android:id="@+id/messageList"
@@ -21,6 +47,8 @@
 
     </LinearLayout>
 
+    </LinearLayout>
 
+    </android.support.v4.widget.SwipeRefreshLayout>
 
 </RelativeLayout>

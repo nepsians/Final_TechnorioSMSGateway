@@ -6,10 +6,12 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -19,14 +21,21 @@ import com.technorio.master.techoriosmsgateway3.R;
 import com.technorio.master.techoriosmsgateway3.Utils.DatabaseHelper;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Ujjwal on 10/23/2018.
  */
 
-public class MessageHistoryFragment extends Fragment{
+public class MessageHistoryFragment extends Fragment {
 
     ListView listView;
+
+    LinearLayout no_record_layout;
+    LinearLayout record_layout;
+    SwipeRefreshLayout pullToRefresh;
+
+    ArrayList<Message> messageList;
 
     @Nullable
     @Override
@@ -35,17 +44,41 @@ public class MessageHistoryFragment extends Fragment{
         View view = inflater.inflate(R.layout.message_history, null);
         listView = view.findViewById(R.id.messageList);
 
-        listView.setAdapter(new MessageListAdapter(getContext(), new DatabaseHelper(getContext()).getMessageList()));
+        no_record_layout = view.findViewById(R.id.no_record_layout);
+        record_layout = view.findViewById(R.id.record_layout);
+        pullToRefresh = view.findViewById(R.id.pullToRefresh);
+
+        messageList = new DatabaseHelper(getContext()).getMessageList();
+
+        if (messageList.size() <= 0) {
+            record_layout.setVisibility(View.GONE);
+            no_record_layout.setVisibility(View.VISIBLE);
+
+        } else {
+            record_layout.setVisibility(View.VISIBLE);
+            no_record_layout.setVisibility(View.GONE);
+        }
+        listView.setAdapter(new MessageListAdapter(getContext(), messageList));
+
+        pullToRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refreshData();
+                pullToRefresh.setRefreshing(false);
+
+            }
+        });
+
         return view;
     }
 
-    public class MessageListAdapter extends ArrayAdapter<Message>{
+    public class MessageListAdapter extends ArrayAdapter<Message> {
 
         Context context;
         ArrayList<Message> messageList;
 
         public MessageListAdapter(@NonNull Context context, ArrayList<Message> messageList) {
-            super(context, 0 ,messageList);
+            super(context, 0, messageList);
             this.context = context;
             this.messageList = messageList;
         }
@@ -60,9 +93,10 @@ public class MessageHistoryFragment extends Fragment{
             TextView message_no = view.findViewById(R.id.message_no);
             TextView message_date = view.findViewById(R.id.message_date);
 
+
             final Message msg = messageList.get(position);
             message.setText(msg.getMessage());
-            message_no.setText(new DatabaseHelper(getContext()).getSMSNoByMessageId(msg.getId())+" messages sent");
+            message_no.setText(new DatabaseHelper(getContext()).getSMSNoByMessageId(msg.getId()) + " messages sent");
             message_date.setText(msg.getDate());
 
             view.setOnClickListener(new View.OnClickListener() {
@@ -76,6 +110,21 @@ public class MessageHistoryFragment extends Fragment{
 
             return view;
         }
+    }
+
+    private void refreshData() {
+
+        messageList = new DatabaseHelper(getContext()).getMessageList();
+
+        if (messageList.size() <= 0) {
+            record_layout.setVisibility(View.GONE);
+            no_record_layout.setVisibility(View.VISIBLE);
+
+        } else {
+            record_layout.setVisibility(View.VISIBLE);
+            no_record_layout.setVisibility(View.GONE);
+        }
+        listView.setAdapter(new MessageListAdapter(getContext(), messageList));
     }
 
 }

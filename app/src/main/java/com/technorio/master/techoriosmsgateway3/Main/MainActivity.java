@@ -10,6 +10,7 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
@@ -50,6 +51,8 @@ public class MainActivity extends AppCompatActivity
     private TextView sim2TextView;
     Boolean isSimSelected= SharedPrefManager.getInstance(this).isSimSelected();
     public static final int REQUEST_ID_MULTIPLE_PERMISSIONS = 1;
+    private String selectedFragment = "subscribeFragment";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +74,7 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.container, new SubscribeFragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.container, new SubscribeFragment(), "root_fragment").commit();
 
         if (checkAndRequestPermissions()) {
 
@@ -199,16 +202,43 @@ public class MainActivity extends AppCompatActivity
                 }
             }
 
+        }}
 
-    }}
+    Boolean doubleBackToExitPressedOnce = false;
+
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
+
+        SubscribeFragment subscribeFragment = (SubscribeFragment) getSupportFragmentManager().findFragmentByTag("root_fragment");
+
+        if(subscribeFragment != null && subscribeFragment.isVisible()) {
+
+            DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+            if (drawer.isDrawerOpen(GravityCompat.START)) {
+                drawer.closeDrawer(GravityCompat.START);
+            } else {
+
+                if (doubleBackToExitPressedOnce) {
+                    super.onBackPressed();
+                    return;
+                }
+
+                doubleBackToExitPressedOnce = true;
+
+                Toast.makeText(this, "Please press BACK again to exit", Toast.LENGTH_SHORT).show();
+
+                new Handler().postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        doubleBackToExitPressedOnce = false;
+                    }
+                }, 2000);
+
+            }
+        }else{
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, new SubscribeFragment(), "root_fragment").commit();
         }
     }
 
@@ -239,7 +269,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_subscription) {
-            getSupportFragmentManager().beginTransaction().replace(R.id.container, new SubscribeFragment()).commit();
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, new SubscribeFragment(), "root_fragment").commit();
         } else if (id == R.id.nav_history) {
             getSupportFragmentManager().beginTransaction().replace(R.id.container, new MessageHistoryFragment()).commit();
         } else if (id == R.id.nav_about) {
@@ -247,7 +277,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_logout) {
             SharedPrefManager.getInstance(getApplicationContext()).setUserStatus(false);
             startActivity(new Intent(MainActivity.this, LoginActivity.class));
-            SharedPrefManager.getInstance(getApplicationContext()).clearSubscriptionTopic();
+            //SharedPrefManager.getInstance(getApplicationContext()).clearSubscriptionTopic();
             finish();
         } else if (id == R.id.nav_sim_setting){
             getSupportFragmentManager().beginTransaction().replace(R.id.container, new SimSettingFragment()).commit();
@@ -271,9 +301,6 @@ public class MainActivity extends AppCompatActivity
             mNotificationManager.createNotificationChannel(mChannel);
         }
     }
-
-
-
 
     private boolean checkAndRequestPermissions() {
         int permissionSendMessage = ContextCompat.checkSelfPermission(this,
@@ -362,6 +389,8 @@ public class MainActivity extends AppCompatActivity
                 .create()
                 .show();
     }
+    
+    
 
 
 }

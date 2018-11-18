@@ -24,6 +24,9 @@ public class MessageDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_message_detail);
 
+        getSupportActionBar().setTitle("Message Details");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         message = findViewById(R.id.message);
         listView = findViewById(R.id.number_list);
 
@@ -34,15 +37,23 @@ public class MessageDetailActivity extends AppCompatActivity {
         number_list = new DatabaseHelper(MessageDetailActivity.this).getNumberList(message_id);
 
         ArrayAdapter<String> itemsAdapter =
-                new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, number_list);
-
+                new ArrayAdapter<>(this, R.layout.number_list_item, number_list);
+//R.layout.simple_list_item_1
+        listView.setDividerHeight(0);
+        listView.setDivider(null);
         listView.setAdapter(itemsAdapter);
+
 
         message.setText(new DatabaseHelper(MessageDetailActivity.this).getMessageById(message_id));
 
+
     }
 
-
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
+    }
 
 
 }
