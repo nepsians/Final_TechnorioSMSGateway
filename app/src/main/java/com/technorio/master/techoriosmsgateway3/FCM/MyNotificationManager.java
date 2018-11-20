@@ -4,6 +4,9 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Vibrator;
 import android.support.v4.app.NotificationCompat;
 import android.telephony.SmsManager;
@@ -32,9 +35,13 @@ public class MyNotificationManager {
     }
 
     public void displayNotification(String title, String body, String message, ArrayList<String> numList){
+
+        Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(mCtx, Constants.CHANNEL_ID)
                 .setSmallIcon(R.drawable.logo)
+                .setLargeIcon(BitmapFactory.decodeResource(mCtx.getResources(), R.drawable.logo))
                 .setContentTitle(title)
+                .setSound(defaultSoundUri)
                 .setContentText(body);
 
         Intent intent = new Intent(mCtx, MainActivity.class);
